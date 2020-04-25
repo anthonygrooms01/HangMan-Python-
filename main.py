@@ -13,8 +13,8 @@ import random
 """
 
 wordsFile = open("Words.txt","r") #open the words file
-lstWords = wordsFile.readlines() #append each word in the file onto lstWords
-word = lstWords[random.randint(0,len(lstWords))] #pick a random word
+lstWords = wordsFile.readlines() #create a list of words
+word = lstWords[random.randint(0,len(lstWords)-1)] #pick a random word
 word = word[:-1] #remove the newline from the word
 
 #create the hidden word string
