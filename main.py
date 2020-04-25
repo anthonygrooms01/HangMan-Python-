@@ -14,6 +14,7 @@ import random
 
 wordsFile = open("Words.txt","r") #open the words file
 lstWords = wordsFile.readlines() #create a list of words
+wordsFile.close() #close the file
 word = lstWords[random.randint(0,len(lstWords)-1)] #pick a random word
 word = word[:-1] #remove the newline from the word
 
@@ -24,6 +25,9 @@ for letter in word:
 
 deadGuyPicture = ["\nO O","\n[.]","\n---","\n | ","\n | ","\n/"," \\"] #load each part of the death picture into the deadGuyPicture list
 guessCount = 0
+
+#Keep track of the letters the user already entered
+usedLetters = []
 
 #keep asking for input while the player has not uncovered the whole word and they have used less than 7 guesses
 while displayWord != word and guessCount < 7:
@@ -37,7 +41,12 @@ while displayWord != word and guessCount < 7:
     print(displayWordText)
 
     #ask the user for a letter
-    letter = input("Enter letter: ").lower()
+    while True:
+        letter = input("Enter letter: ").lower()
+        if letter not in usedLetters:
+            usedLetters.append(letter)
+            break
+        print('You arleady used that letter!')
 
     #if the letter is in word, edit the hidden word string to display the found letter
     if letter in word:
@@ -54,14 +63,6 @@ while displayWord != word and guessCount < 7:
 
 #if the guesscount is less than seven, say the player won, otherwise, say the player lossed
 if guessCount < 7:
-
-    #create a variable that stores either the singular or plural word of time to be used in the win statement depending on how many incorrect guesses the player has used.
-    plural = "times"
-    if guessCount == 1:
-        plural = "time"
-        
-    print("You win! The word is {}. You guessed incorrectly {} {}.".format(displayWord,guessCount,plural))
+    print("You win! The word is {}. You guessed incorrectly {} {}.".format(displayWord,guessCount,'time'+('s','')[guessCount!=1]))
 else:
     print("You lose! The word was "+word+".")
-
-wordsFile.close() #close the file
