@@ -8,7 +8,7 @@ import random
 
     Everytime the player enters a letter that is in the word, reveal that letter
 
-    Process continues until all letters are revealed or if the player ran out of guesses
+    Process continues until all letters are revealed or the player ran out of guesses
 
 """
 
