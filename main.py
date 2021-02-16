@@ -13,6 +13,7 @@ wordsFile = open('Words.txt','r') #open the words file
 lstWords = wordsFile.readlines() #create a list of words
 wordsFile.close() #close the file
 validLetters = 'abcdefghijklmnopqrstuvwxyz'
+deadGuyPicture = ['\nO O','\n[.]','\n---','\n | ','\n | ','\n/',' \\'] #create death picture into the deadGuyPicture list
 
 #run the game indefinitely until the user does not want to play again
 while True:
@@ -24,8 +25,7 @@ while True:
     displayWord = ''
     for letter in word:
         displayWord+='_'
-
-    deadGuyPicture = ['\nO O','\n[.]','\n---','\n | ','\n | ','\n/',' \\'] #load each part of the death picture into the deadGuyPicture list
+    
     guessCount = 0
 
     #keep track of the letters the user already entered
@@ -60,7 +60,7 @@ while True:
             for index in range(len(word)):
                 if word[index]==letter:
                     displayWord = displayWord[:index]+letter+displayWord[index+1:]
-        else: #otherwise, increase the guesscount, and display guessCount (the amount of incorrect guesses the player used) parts of the death picture
+        else: #otherwise, increase the guesscount, and display guessCount parts of the death picture
             guessCount += 1
             for index in range(guessCount):
                 print(deadGuyPicture[index],end='')
@@ -77,3 +77,4 @@ while True:
     if input('Do you want to play again? Enter "no" to end, otherwise play again! ').lower()=='no':
         break
     print()
+
