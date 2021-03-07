@@ -17,7 +17,6 @@ validLetters = list('abcdefghijklmnopqrstuvwxyz')
 deadGuyPicture = ['\nO O','\n[.]','\n---','\n | ','\n | ','\n/',' \\'] #create death picture into the deadGuyPicture list
 
 #run the game indefinitely until the user does not want to play again
-#while True: 
 
 while True:
 
